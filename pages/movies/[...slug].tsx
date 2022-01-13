@@ -24,9 +24,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     if (context.params) {
 
+        console.log(window.location.hostname)
+
         if (context.params.slug) {
             const slug = context.params.slug[0]
-            const res = await fetch(`http://localhost:3000/api/movie/${slug}`)
+            const res = await fetch(`${process.env.NOW_URL ? process.env.NOW_URL : "http://localhost:3000"}/api/movie/${slug}`)
             const data = await res.json()
             
 
