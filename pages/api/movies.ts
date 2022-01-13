@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from "../../lib/prisma"
-
+import { Movie } from '@prisma/client'
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse<Movie[]>
   ) {
     
     const movies = await prisma.movie.findMany()
