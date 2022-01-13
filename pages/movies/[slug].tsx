@@ -10,7 +10,7 @@ interface MoviePageProps {
 
 const MoviePage: NextPage<MoviePageProps> = ({movieData}) => {
 
-    if (!movieData) return <h1>Chuj nie ma filmu</h1>
+    if (!movieData) return <h1>{process.env.VERCEL_URL}</h1>
 
     return (
         <div>
@@ -22,24 +22,23 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData}) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
-    if (context.params) {
+    // if (context.params) {
 
-        console.log(window.location.hostname)
 
-        if (context.params.slug) {
-            const slug = context.params.slug[0]
-            const res = await fetch(`${process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api/movie/${slug}` : "http://localhost:3000"}/api/movie/${slug}`)
-            const data = await res.json()
+    //     if (context.params.slug) {
+    //         const slug = context.params.slug[0]
+    //         const res = await fetch(`/api/movie/${slug}`)
+    //         const data = await res.json()
             
 
-            return {
-                props: {
-                    movieData: data.data
-                }
-            }
-        }
+    //         return {
+    //             props: {
+    //                 movieData: data.data
+    //             }
+    //         }
+    //     }
        
-    }
+    // }
     
 
     return {
