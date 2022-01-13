@@ -22,23 +22,23 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData}) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
-    // if (context.params) {
+    if (context.params) {
 
 
-    //     if (context.params.slug) {
-    //         const slug = context.params.slug[0]
-    //         const res = await fetch(`/api/movie/${slug}`)
-    //         const data = await res.json()
+        if (context.params.slug) {
+            const slug = context.params.slug[0]
+            const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/movie/${slug}`)
+            const data = await res.json()
             
 
-    //         return {
-    //             props: {
-    //                 movieData: data.data
-    //             }
-    //         }
-    //     }
+            return {
+                props: {
+                    movieData: data.data
+                }
+            }
+        }
        
-    // }
+    }
     
 
     return {
