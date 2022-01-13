@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { Movie } from '@prisma/client'
 import { useRecoilState } from 'recoil'
 import {moviesState} from "../atoms/moviesAtoms"
+import MovieCard from '../components/MovieCard'
 
 const Home: NextPage = () => {
 
@@ -23,15 +24,10 @@ const Home: NextPage = () => {
 
 
   return (
-    <div>
-      {movies.map(movie => {
-        return (
-          <div className='border-teal-400 rounded-lg border-2 w-32 h-32' key={movie.id}>
-            <p>{movie.name}</p>
-            <p>{movie.director}</p>
-          </div>
-        )
-      })}
+    <div className='h-screen flex justify-center items-center'>
+      <div className='flex justify-center items-center'>
+        {movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+      </div>
     </div>
   )
 }

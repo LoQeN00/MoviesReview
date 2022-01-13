@@ -20,4 +20,5 @@ model Movie {
   updatedAt DateTime  @updatedAt
   name      String    @db.VarChar(255)
   director  String    @db.VarChar(255)
+  img       String    @db.VarChar(255)
 }
