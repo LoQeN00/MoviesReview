@@ -10,7 +10,7 @@ interface MoviePageProps {
 
 const MoviePage: NextPage<MoviePageProps> = ({movieData}) => {
 
-    if (!movieData) return null
+    if (!movieData) return <h1>Chuj nie ma filmu</h1>
 
     return (
         <div>
