@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   useEffect(() => {
 
     const fetchData = async () => {
-      const data = await fetch(`https://movies-review-three.vercel.app/api/movies`)
+      const data = await fetch(`${process.env.WEBSITE_URL}/api/movies`)
       const response = await data.json()
       console.log(response)
     }
