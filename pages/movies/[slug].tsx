@@ -10,7 +10,7 @@ interface MoviePageProps {
 
 const MoviePage: NextPage<MoviePageProps> = ({movieData}) => {
 
-    if (!movieData) return <h1>{process.env.VERCEL_URL}</h1>
+    if (!movieData) return null
 
     return (
         <div>
@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
         if (context.params.slug) {
             const slug = context.params.slug[0]
-            const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/movie/${slug}`)
+            const res = await fetch(`https://movies-review-three.vercel.app//api/movie/${slug}`)
             const data = await res.json()
             
 
