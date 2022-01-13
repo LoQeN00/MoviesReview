@@ -13,7 +13,7 @@ const MovieCard: FC<MovieCardProps> = ({movie}) => {
     return (
         <div className='w-80 h-80' key={movie.id}>
             <Link href={`/movies/${movie.id}`} passHref>
-                <Image layout='responsive' src={movie.img} alt={movie.name} width={300} height={300} />
+                <Image layout='responsive' src={movie.img} alt={movie.name} width={300} height={390} />
             </Link>
         </div>
     )
