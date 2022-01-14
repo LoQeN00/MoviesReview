@@ -16,7 +16,17 @@ export default async function handler(
           }
         })
 
-        res.status(200).json({data: movieData})
+        const comments = await prisma.comment.findMany({
+          where: {
+            movieId: parseInt(req.query.id)
+          },
+
+          include: {
+            movie: true
+          }
+        })
+
+        res.status(200).json({movieData,comments})
 
       } else {
         res.status(400).json({error: "Cannot find that movie"})
