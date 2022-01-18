@@ -1,30 +1,69 @@
-import React from 'react'
+import React,{useEffect,useRef} from 'react'
 import type { NextPage } from 'next'
 import { GetServerSideProps } from "next"
-import {Movie} from "@prisma/client"
+import {Movie, Comment} from "@prisma/client"
 import Image from "next/image"
+import { useRecoilState } from 'recoil'
+import { commentsState } from "../../atoms/commentsAtoms"
+import CommentComponent from "../../components/Comment"
+import {useRouter} from "next/router"
 
 interface MoviePageProps {
     movieData: Movie;
-    comments: any[];
+    comments: Comment[];
 }
 
 const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
 
-    if (!movieData) return null
+    const [coms,setComs] = useRecoilState<Comment[] | null>(commentsState)
+    const router = useRouter()
 
-    console.log(comments)
+    const inputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        setComs(comments)
+    },[setComs,comments])
+
+    const addComment = async () => {
+        const slug = router.query.slug
+
+        if (inputRef.current) {
+
+            const data = await fetch("/api/comments/addComment", {
+                method: "POST",
+                body: JSON.stringify({
+                    text: inputRef.current.value,
+                    slug
+                })
+            })
+
+            const commentsData = await data.json()
+
+        
+            setComs(commentsData.comments)
+
+           
+        }
+        
+    }
+    
+
+    if (!movieData || !coms) return null
+
+    console.log(coms)
+
+    
+    
 
     return (
         <div>
             <h1>{movieData.name}</h1>
             <Image src={movieData.img} alt={movieData.name} width={300} height={300} />
             <h2>Komentarze</h2>
-            {comments.map(comment => {
-                return (
-                    <p key={comment.id}>{comment.text}</p>
-                )
-            })}
+
+            {coms.map(comment => <CommentComponent comment={comment} key={comment.id} />) }
+            <input type="text" ref={inputRef}  />
+            <button onClick={addComment}>Dodaj komentarz</button>
         </div>
     )
 }
@@ -39,9 +78,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             const res = await fetch(`https://movies-review-three.vercel.app/api/movie/${slug}`)
             
             const data = await res.json()
-
-            console.log(data)
-            
 
             return {
                 props: {
