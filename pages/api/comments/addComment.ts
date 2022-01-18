@@ -13,10 +13,10 @@ export default async function handler(
     const commentData = {
         createdAt: new Date(Date.now()),
         updatedAt: new Date(Date.now()),
-        text: req.body.text,
+        text: data.text,
         movie: {
            connect: {
-               id: parseInt(req.body.slug)
+               id: parseInt(data.slug)
            }
         }
             
@@ -27,13 +27,13 @@ export default async function handler(
         data: commentData
     })
 
-    const movies = await fetch(`https://movies-review-three.vercel.app/api/movie/${req.body.slug}`)
+    // const movies = await fetch(`https://movies-review-three.vercel.app/api/movie/${data.slug}`)
 
-    const moviesJSON = await movies.json()
+    // const moviesJSON = await movies.json()
 
-    console.log(moviesJSON)
+    // console.log(moviesJSON)
 
-    res.status(200).json(moviesJSON)
+    // res.status(200).json(moviesJSON)
    
     
 }
