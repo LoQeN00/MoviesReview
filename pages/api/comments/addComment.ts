@@ -16,7 +16,7 @@ export default async function handler(
         text: data.text,
         movie: {
            connect: {
-               id: parseInt(data.slug)
+               id: parseInt(req.body.slug)
            }
         }
             
@@ -27,7 +27,7 @@ export default async function handler(
         data: commentData
     })
 
-    const movies = await fetch(`https://movies-review-three.vercel.app/api/movie/${data.slug}`)
+    const movies = await fetch(`https://movies-review-three.vercel.app/api/movie/${req.body.slug}`)
 
     const moviesJSON = await movies.json()
 
