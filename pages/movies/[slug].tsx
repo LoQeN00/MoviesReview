@@ -31,7 +31,7 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
 
             console.log(slug)
 
-            const data = await fetch("https://movies-review-three.vercel.app/api/comments/addComment", {
+            const data = await fetch("/api/comments/addComment", {
                 method: "POST",
                 body: JSON.stringify({
                     text: inputRef.current.value,
