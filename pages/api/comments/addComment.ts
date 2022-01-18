@@ -13,7 +13,7 @@ export default async function handler(
     const commentData = {
         createdAt: new Date(Date.now()),
         updatedAt: new Date(Date.now()),
-        text: data.text,
+        text: req.body.text,
         movie: {
            connect: {
                id: parseInt(req.body.slug)
