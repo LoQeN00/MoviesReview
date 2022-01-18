@@ -41,6 +41,8 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
 
             const commentsData = await data.json()
 
+            console.log(commentsData)
+
         
             setComs(commentsData.comments)
 
