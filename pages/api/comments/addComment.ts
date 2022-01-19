@@ -25,5 +25,9 @@ export default async function handler(
 
     const result = await prisma.comment.create({
         data: commentData
-    })  
+    })
+    
+    res.status(200).json({
+        message:"succes"
+    })
 }

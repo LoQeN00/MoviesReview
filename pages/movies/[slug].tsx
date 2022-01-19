@@ -29,6 +29,8 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
 
         if (inputRef.current) {
 
+            
+
             const data = await fetch("/api/comments/addComment", {
                 method: "POST",
                 body: JSON.stringify({
