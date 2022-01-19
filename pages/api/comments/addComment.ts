@@ -25,15 +25,5 @@ export default async function handler(
 
     const result = await prisma.comment.create({
         data: commentData
-    })
-
-    // const movies = await fetch(`https://movies-review-three.vercel.app/api/movie/${data.slug}`)
-
-    // const moviesJSON = await movies.json()
-
-    // console.log(moviesJSON)
-
-    // res.status(200).json(moviesJSON)
-   
-    
+    })  
 }
