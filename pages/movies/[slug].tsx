@@ -39,14 +39,12 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
                 })
             })
 
-            // const commentsData = await data.json()
+            const updatedDataJson = await fetch(`https://movies-review-three.vercel.app/api/movie/${slug}`)
 
-            // console.log(commentsData)
+            const updatedData = await updatedDataJson.json()
 
-        
-            // setComs(commentsData.comments)
+            setComs(updatedData.comments)
 
-           
         }
         
     }
