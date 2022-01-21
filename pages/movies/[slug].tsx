@@ -31,16 +31,23 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
         const slug = router.query.slug
 
         if (inputRef.current) {
+            if (session) {
 
-            
+                if (session.user) {
 
-            const data = await fetch("/api/comments/addComment", {
-                method: "POST",
-                body: JSON.stringify({
-                    text: inputRef.current.value,
-                    slug
-                })
-            })
+                    const data = await fetch("/api/comments/addComment", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            text: inputRef.current.value,
+                            author: session?.user.name,
+                            slug
+                        })
+                    })
+                    
+                }
+            }
+
+           
 
             const updatedDataJson = await fetch(`https://movies-review-three.vercel.app/api/movie/${slug}`)
 
