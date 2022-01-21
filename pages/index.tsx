@@ -31,8 +31,16 @@ const Home: NextPage = () => {
 
   return (
     <>
-    {session ? <h1>Witaj {session.user?.name}</h1> : <h1>Witaj, aby w pełni móc korzystać z serwisu <Link href="/login"><a className='border-2 rounded-md border-black'>Zaloguj się</a></Link></h1> }
-    {session ? <button onClick={() => signOut()}>Wyloguj</button> : null} 
+    {session ?
+     <h1>Witaj {session.user?.name}</h1> :
+     <h1>Witaj, aby w pełni móc korzystać z serwisu <Link href="/login"><a className='border-2 rounded-md border-black'>Zaloguj się</a></Link></h1>
+    }
+    
+    {session ?
+     <button onClick={() => signOut()}>Wyloguj</button> :
+      null
+    } 
+    
     <div className='h-screen flex justify-center items-center'>
       <div className='flex justify-center items-center'>
         {movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
