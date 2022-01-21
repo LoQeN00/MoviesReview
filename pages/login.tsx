@@ -1,13 +1,8 @@
 import React,{FC} from 'react';
 import {getProviders,signIn,signOut} from "next-auth/react"
-import { GetServerSideProps } from "next"
-
-interface LoginPageProps {
-    providers: object;
-}
 
 
-const LoginPage: FC<LoginPageProps> = ({providers}) => {
+const LoginPage: FC= () => {
 
 
   return (
@@ -19,17 +14,5 @@ const LoginPage: FC<LoginPageProps> = ({providers}) => {
   ) 
 };
 
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-
-    return {
-        props: {
-
-        }
-    }
-
-  
-
-}
 
 export default LoginPage;
