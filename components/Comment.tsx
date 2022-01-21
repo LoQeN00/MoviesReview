@@ -10,7 +10,7 @@ interface CommentProps {
 const CommentComponent: FC<CommentProps> = ({comment}) => {
     return (
         <div>
-            <p>{comment.author}:{comment.text}</p>
+            <p><Image className='w-32 h-32 rounded-full' src={comment.authorImg} alt={comment.author} />{comment.author}:{comment.text}</p>
         </div>
     )
 }
