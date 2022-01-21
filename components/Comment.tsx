@@ -9,7 +9,7 @@ interface CommentProps {
 const CommentComponent: FC<CommentProps> = ({comment}) => {
     return (
         <div>
-            <p>{comment.text}</p>
+            <p>{comment.author}:{comment.text}</p>
         </div>
     )
 }
