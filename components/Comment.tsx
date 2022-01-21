@@ -1,5 +1,6 @@
 import React, {FC} from 'react'
 import {Comment} from "@prisma/client"
+import Image from "next/image"
 
 
 interface CommentProps {

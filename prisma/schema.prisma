@@ -29,6 +29,7 @@ model Movie {
 model Comment {
   id        Int       @default(autoincrement()) @id
   author    String    @db.VarChar(255)
+  authorImg String    @db.VarChar(255) @default("es")
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt  
   text      String    @db.VarChar(255)

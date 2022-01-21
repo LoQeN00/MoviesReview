@@ -43,7 +43,8 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
                         method: "POST",
                         body: JSON.stringify({
                             text: inputRef.current.value,
-                            author: session?.user.name,
+                            author: session.user.name,
+                            authorImg: session.user.image,
                             slug
                         })
                     })

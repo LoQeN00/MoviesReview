@@ -14,6 +14,7 @@ export default async function handler(
         updatedAt: new Date(Date.now()),
         text: data.text,
         author: data.author,
+        authorImg: data.authorImg,
         movie: {
            connect: {
                id: parseInt(data.slug)
