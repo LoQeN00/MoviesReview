@@ -12,15 +12,9 @@ const LoginPage: FC<LoginPageProps> = ({providers}) => {
 
   return (
     <div>
-        
-               
-                    <div>
-                        <button onClick={() => signIn('facebook', {callbackUrl:"/"})} className="bg-blue-600 p-5 text-white rounded-full">Login with facebook</button>
-                    </div>
-                
-         
-         
-         
+        <div>
+            <button onClick={() => signIn('facebook', {callbackUrl:"/"})} className="bg-blue-600 p-5 text-white rounded-full">Login with facebook</button>
+        </div>
     </div>
   ) 
 };

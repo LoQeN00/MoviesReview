@@ -7,6 +7,7 @@ import { useRecoilState } from 'recoil'
 import { commentsState } from "../../atoms/commentsAtoms"
 import CommentComponent from "../../components/Comment"
 import {useRouter} from "next/router"
+import { useSession} from 'next-auth/react'
 
 interface MoviePageProps {
     movieData: Movie;
@@ -14,6 +15,8 @@ interface MoviePageProps {
 }
 
 const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
+
+    const { data: session, status } = useSession()
 
     const [coms,setComs] = useRecoilState<Comment[] | null>(commentsState)
     const router = useRouter()
@@ -59,7 +62,7 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
 
             {coms.map(comment => <CommentComponent comment={comment} key={comment.id} />) }
             <input className='border-black border-2' type="text" ref={inputRef}  />
-            <button onClick={addComment}>Dodaj komentarz</button>
+            {session ? <button onClick={addComment}>Dodaj komentarz</button> : <p>Aby móc dodawać komentarze zaloguj się</p>}
         </div>
     )
 }
