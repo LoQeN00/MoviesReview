@@ -31,7 +31,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-    <h1>{session ? `Witaj ${session.user?.name}` : `Witaj, aby móc w pełni używać naszego serwisu zaloguj się `}</h1>
+    {session ? <h1>Witaj {session.user?.name}</h1> : <h1>Witaj, aby w pełni móc korzystać z serwisu <Link href="/login"><a>Zaloguj się</a></Link></h1> }
     {session ? <button onClick={() => signOut()}>Wyloguj</button> : null} 
     <div className='h-screen flex justify-center items-center'>
       <div className='flex justify-center items-center'>
