@@ -28,9 +28,13 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
     },[setComs,comments])
 
     const addComment = async () => {
+
         const slug = router.query.slug
 
         if (inputRef.current) {
+
+            if (inputRef.current.value = "") return
+
             if (session) {
 
                 if (session.user) {
@@ -43,7 +47,7 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
                             slug
                         })
                     })
-                    
+
                 }
             }
 
@@ -52,6 +56,8 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
             const updatedDataJson = await fetch(`https://movies-review-three.vercel.app/api/movie/${slug}`)
 
             const updatedData = await updatedDataJson.json()
+
+            inputRef.current.value = ""
 
             setComs(updatedData.comments)
 
