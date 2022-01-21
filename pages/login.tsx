@@ -8,6 +8,10 @@ interface LoginPageProps {
 
 
 const LoginPage: FC<LoginPageProps> = ({providers}) => {
+
+
+    if (!providers) return <h1>Nie ma providerów</h1>
+
   return (
     <div>
         {Object.values(providers).map(provider => {
@@ -28,11 +32,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const providers = await getProviders()
 
-    return {
-        props: {
-            providers
+    if (providers) {
+        return {
+            props: {
+                providers
+            }
         }
     }
+
+    return {
+        props: {
+
+        }
+    }
+
+  
 
 }
 
