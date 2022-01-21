@@ -57,12 +57,11 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
 
             const updatedData = await updatedDataJson.json()
 
-            inputRef.current.value = ""
-
             setComs(updatedData.comments)
 
+            inputRef.current.value = ""
+
         }
-        
     }
     
     if (!movieData || !coms) return null
