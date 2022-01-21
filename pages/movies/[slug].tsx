@@ -33,7 +33,7 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
 
         if (inputRef.current) {
 
-            if (inputRef.current.value = "") return
+            if (inputRef.current.value === "") return
 
             if (session) {
 
