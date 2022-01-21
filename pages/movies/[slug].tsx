@@ -65,8 +65,6 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
     if (!movieData || !coms) return null
 
 
-    console.log(session)
-
     return (
         <div>
             <h1>{movieData.name}</h1>

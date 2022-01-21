@@ -10,7 +10,7 @@ interface CommentProps {
 const CommentComponent: FC<CommentProps> = ({comment}) => {
     return (
         <div>
-            <p><Image className='w-32 h-32 rounded-full' src={comment.authorImg} alt={comment.author} />{comment.author}:{comment.text}</p>
+            <p><Image className='rounded-full' width={64} height={64} src={comment.authorImg} alt={comment.author} />{comment.author}:{comment.text}</p>
         </div>
     )
 }
