@@ -61,8 +61,14 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
             <h2>Komentarze</h2>
 
             {coms.map(comment => <CommentComponent comment={comment} key={comment.id} />) }
-            <input className='border-black border-2' type="text" ref={inputRef}  />
-            {session ? <button onClick={addComment}>Dodaj komentarz</button> : <p>Aby móc dodawać komentarze zaloguj się</p>}
+            
+            {session ? (
+                <>
+                    <input className='border-black border-2' type="text" ref={inputRef}  />
+                    <button onClick={addComment}>Dodaj komentarz</button>
+                </>
+                
+            ) : <p>Aby móc dodawać komentarze zaloguj się</p>}
         </div>
     )
 }
