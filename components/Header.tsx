@@ -1,7 +1,6 @@
 import React,{FC} from 'react';
-import { useSession,signOut,signIn, getSession, SessionContextValue } from 'next-auth/react'
+import { useSession,signOut,signIn } from 'next-auth/react'
 import Link from 'next/link';
-import { GetServerSideProps, } from "next"
 import Image from 'next/image';
 
 
@@ -18,12 +17,12 @@ const Header : FC = () => {
         </div>
         <div>
 
-            {session && session.user ?
+            {session && session.user && session.user.image && session.user.name ?
                 (
                   <div>
                     <div>
                       <h1>{session.user && session.user.name}</h1>
-                      <Image src={ session.user.image } alt={ session.user.name } />
+                      <Image src={session.user.image} alt={ session.user.name } />
                     </div>
                     
                     <button onClick={() => signOut()}>Wyloguj</button>
