@@ -22,7 +22,10 @@ const Header : FC = () => {
                   <div>
                     <div>
                       <h1>{session.user && session.user.name}</h1>
-                      <Image src={session.user.image} alt={ session.user.name } />
+                      <div className='w-16 h-16'>
+                        <Image layout='fill' src={session.user.image} alt={ session.user.name } />
+                      </div>
+                      
                     </div>
                     
                     <button onClick={() => signOut()}>Wyloguj</button>
