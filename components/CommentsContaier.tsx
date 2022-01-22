@@ -63,7 +63,7 @@ const CommentsContaier: FC<CommentsContainerProps> = ({coms,setComs}) => {
         
         {session ? (
             <>
-                <input className='border-black border-2' type="text" ref={inputRef}  />
+                <input className='border-black border-2 text-black' type="text" ref={inputRef}  />
                 <button onClick={addComment}>Dodaj komentarz</button>
             </>
             

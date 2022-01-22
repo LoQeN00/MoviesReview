@@ -18,55 +18,14 @@ interface MoviePageProps {
 
 const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
 
-    const { data: session, status } = useSession()
-
     const [coms,setComs] = useRecoilState<Comment[] | null>(commentsState)
-
-    const router = useRouter()
 
     useEffect(() => {
         setComs(comments)
     },[setComs,comments])
 
-    // const addComment = async () => {
-
-    //     const slug = router.query.slug
-
-    //     if (inputRef.current) {
-
-    //         if (inputRef.current.value === "") return
-
-    //         if (session) {
-
-    //             if (session.user) {
-
-    //                 const data = await fetch("/api/comments/addComment", {
-    //                     method: "POST",
-    //                     body: JSON.stringify({
-    //                         text: inputRef.current.value,
-    //                         author: session.user.name,
-    //                         authorImg: session.user.image,
-    //                         slug
-    //                     })
-    //                 })
-
-    //                 const updatedDataJson = await fetch(`https://movies-review-three.vercel.app/api/movie/${slug}`)
-
-    //                 // const updatedDataJson = await fetch(`http://localhost:3000/api/movie/${slug}`)
-
-    //                 const updatedData = await updatedDataJson.json()
-        
-    //                 setComs(updatedData.comments)
-        
-    //                 inputRef.current.value = ""
-
-    //             }
-    //         }
-    //     }
-    // }
-    
+   
     if (!movieData || !coms) return null
-
 
     return (
         <div className='flex flex-col h-screen'>
