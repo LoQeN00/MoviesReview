@@ -93,6 +93,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
         if (context.params.slug) {
             const slug = context.params.slug[0]
+            
             const res = await fetch(`https://movies-review-three.vercel.app/api/movie/${slug}`)
 
             // const res = await fetch(`http://localhost:3000/api/movie/${slug}`)

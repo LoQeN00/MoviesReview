@@ -30,7 +30,7 @@ const Home: NextPage = () => {
 
 
   return (
-    <div className='bg-primary h-screen flex flex-col'>
+    <div className='bg-primary flex flex-col h-screen'>
       <header className='bg-[#2EC4B6] p-8 text-primary text-2xl flex justify-between'>
         <div>
           <h1 className='text-primary font-bold text-4xl'>MOVIES REVIEW</h1>
@@ -48,7 +48,7 @@ const Home: NextPage = () => {
         </div>
       </header> 
       
-      <div className='flex flex-1 justify-center space-x-10 items-center'>
+      <div className='flex flex-1 justify-center  items-center flex-wrap gap-4'>
         {movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
       </div>
     </div>
