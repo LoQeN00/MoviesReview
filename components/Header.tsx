@@ -8,20 +8,20 @@ const Header = () => {
     const { data: session, status } = useSession()
 
   return (
-    <header className='bg-[#2EC4B6] p-8 text-primary text-2xl flex justify-between'>
+    <header className='bg-[#2EC4B6] p-8 text-primary text-2xl flex justify-between items-center'>
         <div>
-        <h1 className='text-primary font-bold text-4xl'>MOVIES REVIEW</h1>
+          <h1 className='text-primary font-bold text-4xl'>MOVIES REVIEW</h1>
         </div>
         <div>
             {session ?
-                <h1>Witaj {session.user?.name}</h1> :
-                // <h1>Witaj, aby w pełni móc korzystać z serwisu <Link href="/login"><a className='border-2 rounded-md border-black'>Zaloguj się</a></Link></h1>
-                <h1 onClick={() => signIn('facebook', {callbackUrl:"/"})}>Zaloguj sie</h1>
-            }
-                
-            {session ?
-                <button onClick={() => signOut()}>Wyloguj</button> :
-                null
+                (
+                  <>
+                    <h1>Witaj {session.user?.name}</h1>
+                    <button onClick={() => signOut()}>Wyloguj</button>
+                  </> 
+                ):
+        
+                <button className='bg-primary px-6 py-4 text-accent rounded-2xl' onClick={() => signIn('facebook', {callbackUrl:"/"})}>Zaloguj się</button>
             }
             </div>
     </header> 
