@@ -8,6 +8,7 @@ import { commentsState } from "../../atoms/commentsAtoms"
 import CommentComponent from "../../components/Comment"
 import {useRouter} from "next/router"
 import { useSession} from 'next-auth/react'
+import Header from "../../components/Header"
 
 interface MoviePageProps {
     movieData: Movie;
@@ -68,20 +69,23 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
 
 
     return (
-        <div>
-            <h1>{movieData.name}</h1>
-            <Image src={movieData.img} alt={movieData.name} width={300} height={300} />
-            <h2>Komentarze</h2>
+        <div className='flex flex-col h-screen'>
+            <Header />
+            <div className='flex-1 bg-primary text-white'>
+                <h1>{movieData.name}</h1>
+                <Image src={movieData.img} alt={movieData.name} width={300} height={300} />
+                <h2 >Komentarze</h2>
 
-            {coms.map(comment => <CommentComponent comment={comment} key={comment.id} />) }
-            
-            {session ? (
-                <>
-                    <input className='border-black border-2' type="text" ref={inputRef}  />
-                    <button onClick={addComment}>Dodaj komentarz</button>
-                </>
+                {coms.map(comment => <CommentComponent comment={comment} key={comment.id} />) }
                 
-            ) : <p>Aby móc dodawać komentarze zaloguj się</p>}
+                {session ? (
+                    <>
+                        <input className='border-black border-2' type="text" ref={inputRef}  />
+                        <button onClick={addComment}>Dodaj komentarz</button>
+                    </>
+                    
+                ) : <p>Aby móc dodawać komentarze zaloguj się</p>}
+            </div>
         </div>
     )
 }
