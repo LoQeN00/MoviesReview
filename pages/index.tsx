@@ -47,7 +47,6 @@ const Home: NextPage = () => {
             }
         </div>
       </header> 
-      
       <div className='flex flex-1 justify-center  items-center flex-wrap gap-4 bg-primary'>
         {movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
       </div>

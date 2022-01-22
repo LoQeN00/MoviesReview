@@ -11,13 +11,16 @@ interface MovieCardProps {
 const MovieCard: FC<MovieCardProps> = ({movie}) => {
 
     return (
-        <div>
-            <div className='w-[300px] h-[390px] relative'>
-                <Link href={`/movies/${movie.id}`} passHref>
-                    <Image layout="fill" src={movie.img} alt={movie.name} width={300} height={390} />
-                </Link>
+        <Link href={`/movies/${movie.id}`} passHref>
+            <div className='flex flex-col cursor-pointer w-[310px] h-[390px]'>
+                <div className='w-[100%] h-[100%] relative'>
+                    <Image layout="fill" src={movie.img} alt={movie.name} />
+                </div>
+                <div className='bg-accent w-[100%]  rounded-b-lg'>
+                    <p className='text-black text-center text-lg p-4 font-bold'>{movie.name}</p>
+                </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
