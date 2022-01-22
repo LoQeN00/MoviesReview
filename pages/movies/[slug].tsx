@@ -28,42 +28,42 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
         setComs(comments)
     },[setComs,comments])
 
-    const addComment = async () => {
+    // const addComment = async () => {
 
-        const slug = router.query.slug
+    //     const slug = router.query.slug
 
-        if (inputRef.current) {
+    //     if (inputRef.current) {
 
-            if (inputRef.current.value === "") return
+    //         if (inputRef.current.value === "") return
 
-            if (session) {
+    //         if (session) {
 
-                if (session.user) {
+    //             if (session.user) {
 
-                    const data = await fetch("/api/comments/addComment", {
-                        method: "POST",
-                        body: JSON.stringify({
-                            text: inputRef.current.value,
-                            author: session.user.name,
-                            authorImg: session.user.image,
-                            slug
-                        })
-                    })
+    //                 const data = await fetch("/api/comments/addComment", {
+    //                     method: "POST",
+    //                     body: JSON.stringify({
+    //                         text: inputRef.current.value,
+    //                         author: session.user.name,
+    //                         authorImg: session.user.image,
+    //                         slug
+    //                     })
+    //                 })
 
-                    const updatedDataJson = await fetch(`https://movies-review-three.vercel.app/api/movie/${slug}`)
+    //                 const updatedDataJson = await fetch(`https://movies-review-three.vercel.app/api/movie/${slug}`)
 
-                    // const updatedDataJson = await fetch(`http://localhost:3000/api/movie/${slug}`)
+    //                 // const updatedDataJson = await fetch(`http://localhost:3000/api/movie/${slug}`)
 
-                    const updatedData = await updatedDataJson.json()
+    //                 const updatedData = await updatedDataJson.json()
         
-                    setComs(updatedData.comments)
+    //                 setComs(updatedData.comments)
         
-                    inputRef.current.value = ""
+    //                 inputRef.current.value = ""
 
-                }
-            }
-        }
-    }
+    //             }
+    //         }
+    //     }
+    // }
     
     if (!movieData || !coms) return null
 
@@ -75,7 +75,7 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
                 <h1>{movieData.name}</h1>
                 <Image src={movieData.img} alt={movieData.name} width={300} height={300} />
                 <h2 >Komentarze</h2>
-                <CommentsContainer addComment={addComment} coms={coms} />
+                <CommentsContainer setComs={setComs} coms={coms} />
             </div>
         </div>
     )
