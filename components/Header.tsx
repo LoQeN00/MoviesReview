@@ -13,7 +13,9 @@ const Header : FC = () => {
   return (
     <header className='bg-[#2EC4B6] p-8 text-primary text-2xl flex justify-between items-center'>
         <div>
-          <h1 className='text-primary font-bold text-4xl'>MOVIES REVIEW</h1>
+          <Link href="/" passHref>
+            <h1 className='text-primary font-bold text-4xl'>MOVIES REVIEW</h1>
+          </Link>
         </div>
         <div>
 
