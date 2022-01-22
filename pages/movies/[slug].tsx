@@ -9,6 +9,7 @@ import CommentComponent from "../../components/Comment"
 import {useRouter} from "next/router"
 import { useSession} from 'next-auth/react'
 import Header from "../../components/Header"
+import CommentsContainer from "../../components/CommentsContaier"
 
 interface MoviePageProps {
     movieData: Movie;
@@ -20,9 +21,8 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
     const { data: session, status } = useSession()
 
     const [coms,setComs] = useRecoilState<Comment[] | null>(commentsState)
-    const router = useRouter()
 
-    const inputRef = useRef<HTMLInputElement>(null)
+    const router = useRouter()
 
     useEffect(() => {
         setComs(comments)
@@ -75,16 +75,7 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
                 <h1>{movieData.name}</h1>
                 <Image src={movieData.img} alt={movieData.name} width={300} height={300} />
                 <h2 >Komentarze</h2>
-
-                {coms.map(comment => <CommentComponent comment={comment} key={comment.id} />) }
-                
-                {session ? (
-                    <>
-                        <input className='border-black border-2' type="text" ref={inputRef}  />
-                        <button onClick={addComment}>Dodaj komentarz</button>
-                    </>
-                    
-                ) : <p>Aby móc dodawać komentarze zaloguj się</p>}
+                <CommentsContainer addComment={addComment} coms={coms} />
             </div>
         </div>
     )
@@ -121,15 +112,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 
 }
-
-
-
-
-   
-    
-
-
-
-
 
 export default MoviePage
