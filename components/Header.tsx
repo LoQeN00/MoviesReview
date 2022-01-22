@@ -22,7 +22,7 @@ const Header : FC = () => {
                   <div>
                     <div>
                       <h1>{session.user && session.user.name}</h1>
-                      <div className='w-16 h-16'>
+                      <div className='w-16 h-16 relative'>
                         <Image layout='fill' src={session.user.image} alt={ session.user.name } />
                       </div>
                       
