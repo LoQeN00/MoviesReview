@@ -58,7 +58,7 @@ const CommentsContaier: FC<CommentsContainerProps> = ({coms,setComs}) => {
 
   return (
 
-    <div className='flex-1 bg-primary text-white'>
+    <div className='flex-1 bg-primary text-white max-h-[400px] overflow-hidden overflow-y-scroll p-4'>
         {coms.map(comment => <CommentComponent comment={comment} key={comment.id} />) }
         
         {session ? (

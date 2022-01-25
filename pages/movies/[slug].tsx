@@ -30,10 +30,10 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
     return (
         <div className='flex flex-col h-screen'>
             <Header />
-            <div className='flex-1 bg-primary text-white'>
-                <h1>{movieData.name}</h1>
-                <Image src={movieData.img} alt={movieData.name} width={300} height={300} />
-                <h2 >Komentarze</h2>
+            <div className='flex-1 bg-primary text-white p-6'>
+                <h1 className='text-3xl mb-6'>{movieData.name}</h1>
+                <Image src={movieData.img} alt={movieData.name} width={320} height={410} />
+                <h2 className='text-2xl'>Komentarze</h2>
                 <CommentsContainer setComs={setComs} coms={coms} />
             </div>
         </div>
