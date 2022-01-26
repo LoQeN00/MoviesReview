@@ -36,7 +36,7 @@ export default NextAuth({
 
             //@ts-ignore
 
-            session.user.userId = token.userId
+            session.user?.email = "Chuj ci do dupy stara proco"
 
             return session
         }
