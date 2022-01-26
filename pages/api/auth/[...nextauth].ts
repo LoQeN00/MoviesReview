@@ -34,10 +34,9 @@ export default NextAuth({
 
         async session({session,token}) {
 
-            return {
-                ...session,
-                userId: token.userId
-            }
+            
+
+            return session
         }
     },
 
