@@ -14,7 +14,7 @@ const Header : FC = () => {
     <header className='bg-[#2EC4B6] p-8 text-primary text-2xl flex justify-between items-center'>
         <div>
           <Link href="/" passHref>
-            <h1 className='text-primary font-bold text-5xl cursor-pointer'>MOVIES REVIEW</h1>
+            <h1 className='text-primary font-bold text-3xl md:text-5xl cursor-pointer'>MOVIES REVIEW</h1>
           </Link>
         </div>
         <div>
