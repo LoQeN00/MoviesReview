@@ -26,12 +26,10 @@ export default NextAuth({
             }
         },
 
-        async session({session,token}) {
-            return {
-                ...session,
-                userId: token.userId
-            } 
-        }
+        // async session({session,token}) {
+
+            
+        // }
     },
 
     adapter: PrismaAdapter(prisma)
