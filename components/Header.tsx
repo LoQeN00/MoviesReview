@@ -29,7 +29,7 @@ const Header : FC = () => {
                       </div>
                     </div>
                     
-                    <button onClick={() => signOut()}>Wyloguj</button>
+                    <button className='bg-primary px-6 py-4 text-accent rounded-2xl' onClick={() => signOut()}>Wyloguj</button>
                   </div> 
                 ):
         
