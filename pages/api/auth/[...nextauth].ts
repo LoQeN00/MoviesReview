@@ -22,7 +22,7 @@ export default NextAuth({
     callbacks: {
         async jwt({token,account,user}) {
 
-            if (account && user) {
+            if (account) {
                 return {
                     ...token,
                     userId: account.userId
@@ -36,7 +36,7 @@ export default NextAuth({
 
             //@ts-ignore
 
-            session.user?.userId = token.userId
+            session.user?.email = token.userId
 
             return session
         }
