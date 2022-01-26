@@ -28,11 +28,11 @@ export default NextAuth({
 
         async session({session,token}) {
 
-           if(token && token.picture) {
-            session.user.userId = token.picture
+            if (token.name) {
+                session.user.userId = token.name
+            }
 
-            return session   
-           }
+           
 
            return session
         }
