@@ -21,13 +21,11 @@ export default NextAuth({
     },
 
     callbacks: {
-        async jwt({token,account,user}) {
+        
 
-            return token
-        },
+        async session({session,user}) {
 
-        async session({session,token}) {
-
+            session.user.userId = user.id
 
            return session
         }
