@@ -9,6 +9,7 @@ const Header : FC = () => {
 
   const { data: session, status } = useSession()
 
+  console.log(session)
 
   return (
     <header className='bg-[#2EC4B6] p-8 text-primary flex justify-between items-center'>
