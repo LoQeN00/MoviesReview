@@ -34,7 +34,7 @@ export default async function handler(
         } else if (data.reactionType === "-") {
             const updateComment = await prisma.comment.update({
                 data: {
-                    plus: {
+                    minus: {
                         increment: 1
                     }
                 },
