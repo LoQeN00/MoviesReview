@@ -4,8 +4,6 @@ import { prisma } from "../../../lib/prisma"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 
 
-interface ExtendedJWT 
-
 
 export default NextAuth({
 
