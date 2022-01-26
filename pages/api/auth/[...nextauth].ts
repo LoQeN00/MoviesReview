@@ -18,6 +18,25 @@ export default NextAuth({
         signIn: '/login'
     },
 
+    callbacks: {
+        async jwt({token,account,user}) {
+            return {
+                ...token,
+                ...account,
+                ...user
+            }
+        },
+
+        async session({session,token}) {
+
+
+            return {
+                ...session,
+                ...token
+            }
+        }
+    },
+
     adapter: PrismaAdapter(prisma)
 
 })
