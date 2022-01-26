@@ -3,6 +3,7 @@ import FacebookProvider from "next-auth/providers/facebook"
 import { prisma } from "../../../lib/prisma"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 
+
 export default NextAuth({
 
     providers: [
@@ -20,14 +21,21 @@ export default NextAuth({
 
     callbacks: {
         async jwt({token,account,user}) {
-            return {
-                ...token,
-                userId: account?.userId
+
+            if (user) {
+                token.userId = user.id
             }
+
+            return token
         },
 
         async session({session,token}) {
 
+            if (session && session.user && token.userId) {
+                session.user.userId = token.userId
+            }
+            
+            
             return session
         }
     },
