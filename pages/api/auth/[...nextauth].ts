@@ -28,11 +28,13 @@ export default NextAuth({
 
         async session({session,token}) {
 
-           
-            session.user.userId = "CHUJ"
-            
+           if(token && token.picture) {
+            session.user.userId = token.picture
 
-            return session
+            return session   
+           }
+
+           return session
         }
     },
 
