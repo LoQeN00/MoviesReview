@@ -31,7 +31,9 @@ export default NextAuth({
 
         async session({session,token}) {
 
-            session.userId = token.userId
+            // @ts-ignore
+
+            session.user.userId = token.userId
             
             return session
         }
