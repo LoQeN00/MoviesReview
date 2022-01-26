@@ -22,8 +22,11 @@ export default NextAuth({
     callbacks: {
         async jwt({token,account,user}) {
 
-            if (user) {
-                token.userId = user.id
+            if (account && user) {
+                return {
+                    ...token,
+                    userId: account.userId
+                }
             }
 
             return token
@@ -31,7 +34,10 @@ export default NextAuth({
 
         async session({session,token}) {
 
-            return session
+            return {
+                ...session,
+                userId: token.userId
+            }
         }
     },
 
