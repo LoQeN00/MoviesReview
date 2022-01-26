@@ -22,18 +22,15 @@ export default NextAuth({
         async jwt({token,account,user}) {
             return {
                 ...token,
-                ...account,
-                ...user
+                userId: account?.userId
             }
         },
 
         async session({session,token}) {
-
-
             return {
                 ...session,
-                ...token
-            }
+                userId: token.userId
+            } 
         }
     },
 
