@@ -29,11 +29,15 @@ const Header : FC = () => {
                       </div>
                     </div>
                     
-                    <button className='bg-primary px-6 py-4 text-accent rounded-2xl md:text-xl lg:text-2xl' onClick={() => signOut()}>Wyloguj</button>
+                    <button
+                     className='bg-primary px-6 py-4 text-accent rounded-2xl md:text-xl lg:text-2xl'
+                     onClick={() => signOut()}>Wyloguj</button>
                   </div> 
                 ):
         
-                <button className='bg-primary px-6 py-4 text-accent rounded-2xl md:text-xl lg:text-2xl' onClick={() => signIn('facebook', {callbackUrl:"/"})}>Zaloguj się</button>
+                <button
+                 className='bg-primary px-6 py-4 text-accent rounded-2xl md:text-xl lg:text-2xl'
+                 onClick={() => signIn('facebook', {callbackUrl:"/"})}>Zaloguj się</button>
             }
             </div>
     </header> 
