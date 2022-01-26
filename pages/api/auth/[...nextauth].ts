@@ -23,21 +23,14 @@ export default NextAuth({
     callbacks: {
         async jwt({token,account,user}) {
 
-            if (account) {
-
-                token.email = account.userId
-
-                return token
-            }
-
             return token
         },
 
         async session({session,token}) {
 
-            if (token && token.email) {
-                session.user.userId = token.email
-            }
+           
+            session.user.userId = "CHUJ"
+            
 
             return session
         }
