@@ -36,7 +36,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
                     <p className='font-bold text-md tracking-wide'>{comment.author}</p>
                     <p>{comment.text}</p>
                     <div className='absolute bottom-[-18px] right-[-10px] w-14 h-8 bg-accent rounded-lg flex justify-center items-center'>
-                        <p><span>{comment.plus}+</span>  <span>{comment.plus}-</span></p>
+                        <p><span>{comment.plus}+</span>  <span>{comment.minus}-</span></p>
                     </div>
                 </div>
                 {session && <div className='space-x-4 mt-2 flex'>
