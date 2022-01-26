@@ -40,12 +40,12 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
                     </div>
                 </div>
                 {session && <div className='space-x-4 mt-2 flex'>
-                    <div onClick={() => addReaction("+")} className='border-2 border-secondary rounded-full w-7 cursor-pointer'>
+                    {/* <div onClick={() => addReaction("+")} className='border-2 border-secondary rounded-full w-7 cursor-pointer'>
                         <p className='text-center'>+</p>
                     </div>
                     <div onClick={() => addReaction("-")} className='border-2 border-secondary rounded-full w-7 cursor-pointer'>
                         <p className='text-center'> - </p>
-                    </div>
+                    </div> */}
                 </div>}
             </div>
            
