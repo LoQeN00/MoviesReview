@@ -23,17 +23,17 @@ const Header : FC = () => {
                 (
                   <div>
                     <div className='flex space-x-1 justify-center items-center'>
-                      <p className='hidden md:block'>{session.user && session.user.name}</p>
+                      <p className='hidden md:block md:text-xl lg:text-2xl'>{session.user && session.user.name}</p>
                       <div className='w-16 h-16 relative'>
                         <Image quality={100} className='rounded-full' layout='fill' src={session.user.image} alt={ session.user.name } />
                       </div>
                     </div>
                     
-                    <button className='bg-primary px-6 py-4 text-accent rounded-2xl' onClick={() => signOut()}>Wyloguj</button>
+                    <button className='bg-primary px-6 py-4 text-accent rounded-2xl md:text-xl lg:text-2xl' onClick={() => signOut()}>Wyloguj</button>
                   </div> 
                 ):
         
-                <button className='bg-primary px-6 py-4 text-accent rounded-2xl' onClick={() => signIn('facebook', {callbackUrl:"/"})}>Zaloguj się</button>
+                <button className='bg-primary px-6 py-4 text-accent rounded-2xl md:text-xl lg:text-2xl' onClick={() => signIn('facebook', {callbackUrl:"/"})}>Zaloguj się</button>
             }
             </div>
     </header> 
