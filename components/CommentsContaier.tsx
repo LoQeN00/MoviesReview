@@ -5,6 +5,7 @@ import { useSession} from 'next-auth/react'
 import {useRouter} from "next/router"
 import {useRecoilState} from "recoil"
 import { commentsState } from "../atoms/commentsAtoms"
+import AddCommentInput from './AddCommentInput';
 
 
 const CommentsContaier: FC = () => {
@@ -63,13 +64,7 @@ const CommentsContaier: FC = () => {
     <div className='flex-1 bg-primary text-white max-h-[400px] overflow-hidden overflow-y-scroll p-4'>
         {comments.map(comment => <CommentComponent comment={comment} key={comment.id} />) }
         
-        {session ? (
-            <>
-                <input className='border-black border-2 text-black' type="text" ref={inputRef}  />
-                <button onClick={addComment}>Dodaj komentarz</button>
-            </>
-            
-        ) : <p>Aby móc dodawać komentarze zaloguj się</p>}
+        {session ? <AddCommentInput /> : <p>Aby móc dodawać komentarze zaloguj się</p>}
     </div>
 
   );
