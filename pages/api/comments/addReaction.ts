@@ -16,6 +16,7 @@ export default async function handler(
 
         if (data.reactionType === "+") {
 
+
             const updateComment = await prisma.comment.update({
                 data: {
                     plus: {

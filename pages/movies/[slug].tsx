@@ -34,7 +34,7 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
                 <h1 className='text-3xl mb-6'>{movieData.name}</h1>
                 <Image src={movieData.img} alt={movieData.name} width={320} height={410} />
                 <h2 className='text-2xl'>Komentarze</h2>
-                <CommentsContainer setComs={setComs} coms={coms} />
+                <CommentsContainer />
             </div>
         </div>
     )

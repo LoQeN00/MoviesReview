@@ -3,20 +3,20 @@ import CommentComponent from "../components/Comment"
 import { Comment } from "@prisma/client"
 import { useSession} from 'next-auth/react'
 import {useRouter} from "next/router"
+import {useRecoilState} from "recoil"
+import { commentsState } from "../atoms/commentsAtoms"
 
 
-interface CommentsContainerProps {
-    coms: Comment[];
-    setComs: (comments: Comment[]) => void;
-}
-
-const CommentsContaier: FC<CommentsContainerProps> = ({coms,setComs}) => {
+const CommentsContaier: FC = () => {
 
   const router = useRouter()
 
   const { data: session, status } = useSession()
 
+  const [comments,setComments] = useRecoilState<Comment[] | null>(commentsState)
+
   const inputRef = useRef<HTMLInputElement>(null)
+
 
   const addComment = async () => {
 
@@ -46,20 +46,21 @@ const CommentsContaier: FC<CommentsContainerProps> = ({coms,setComs}) => {
 
                 const updatedData = await updatedDataJson.json()
     
-                setComs(updatedData.comments)
+                setComments(updatedData.comments)
     
                 inputRef.current.value = ""
 
+                }
             }
         }
     }
-}
 
+  if(!comments) return null
 
   return (
 
     <div className='flex-1 bg-primary text-white max-h-[400px] overflow-hidden overflow-y-scroll p-4'>
-        {coms.map(comment => <CommentComponent comment={comment} key={comment.id} />) }
+        {comments.map(comment => <CommentComponent comment={comment} key={comment.id} />) }
         
         {session ? (
             <>
