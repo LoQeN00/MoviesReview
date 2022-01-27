@@ -28,7 +28,19 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
 
     },[comment.id])
 
-    console.log(reactions)
+    
+    const addReaction = async (type: "+" | "-") => {
+
+        const response = await fetch('/api/reactions/addReaction', {
+            method: "POST",
+            body: JSON.stringify({
+                reactionType: type,
+                userId: session?.user.userId,
+                comment: comment.id
+            })
+        })
+
+    }
 
 
     return (
@@ -40,7 +52,12 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
                 <div className='bg-secondary p-4 rounded-2xl max-w-[350px] break-words relative'>
                     <p className='font-bold text-md tracking-wide'>{comment.author}</p>
                     <p>{comment.text}</p>
-                    
+                </div>
+                <div>
+                    <div>
+                        <p onClick={() => addReaction("+")}> + </p>
+                        <p onClick={() => addReaction("-")}> - </p>
+                    </div>
                 </div>
             </div>
         </div>
