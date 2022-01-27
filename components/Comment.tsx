@@ -1,5 +1,6 @@
-import React, {FC} from 'react'
-import {Comment} from "@prisma/client"
+import React, {FC, useEffect, useState} from 'react'
+import {GetServerSideProps} from "next"
+import {Comment, Reaction} from "@prisma/client"
 import Image from "next/image"
 import { useSession } from 'next-auth/react'
 
@@ -11,6 +12,23 @@ interface CommentProps {
 const CommentComponent: FC<CommentProps> = ({comment}) => {
 
     const { data: session, status } = useSession()
+
+    const [reactions,setReactions] = useState<Reaction[]>([])
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            const response = await fetch(`/api/reactions/${comment.id}`)
+            const data = await response.json()
+
+            setReactions(data)
+        }
+
+        fetchData()
+
+    },[comment.id])
+
+    console.log(reactions)
 
 
     return (
@@ -28,5 +46,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
         </div>
     )
 }
+
+
 
 export default CommentComponent

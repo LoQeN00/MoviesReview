@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from "../../../lib/prisma"
-import { Movie } from '@prisma/client'
+import { Movie, Comment } from '@prisma/client'
 
 export default async function handler(
     req: NextApiRequest,

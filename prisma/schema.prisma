@@ -34,7 +34,8 @@ model Comment {
   updatedAt DateTime  @updatedAt  
   text      String    @db.VarChar(255)
   movie     Movie     @relation(fields: [movieId], references: [id])
-  movieId   Int 
+  movieId   Int
+  reaction  Reaction[] 
 }
 
 
@@ -75,6 +76,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  reaction      Reaction[]
 }
 
 model VerificationToken {
@@ -83,4 +85,14 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+
+model Reaction {
+  id        Int    @default(autoincrement()) @id
+  type      String
+  comment   Comment @relation(fields: [commentId],references: [id])
+  commentId Int
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String
 }

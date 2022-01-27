@@ -24,7 +24,6 @@ const MoviePage: NextPage<MoviePageProps> = ({movieData,comments}) => {
         setComs(comments)
     },[setComs,comments])
 
-   
     if (!movieData || !coms) return null
 
     return (
