@@ -16,6 +16,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
     const [reactions,setReactions] = useState<Reaction[]>([])
     const [plusCount,setPlusCount] = useState()
     const [minusCount,setMinusCount] = useState()
+    const [canAddReaction,setCanAddReaction] = useState(false)
 
 
     useEffect(() => {
@@ -34,6 +35,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
             setReactions(data.reactions)
             setPlusCount(data.plusCount)
             setMinusCount(data.minusCount)
+            setCanAddReaction(data.canAddReaction)
         }
 
         fetchData()
@@ -82,7 +84,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
                     </div>
                 </div>
                 <div>
-                    {session && session.user.userId != comment.userId ?  (
+                    {session && session.user.userId != comment.userId  && canAddReaction ? (
                         <div>
                         <div onClick={() => addReaction("+")}> + </div>
                         <div onClick={() => addReaction("-")}> - </div>

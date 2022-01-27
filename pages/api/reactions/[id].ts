@@ -35,9 +35,15 @@ export default async function handler(
           }
         })
 
-        const test = await prisma.reaction.findMany()
-        
-        res.status(200).json({reactions,plusCount,minusCount})
+        const userReactions = await prisma.reaction.count({
+          where: {
+            userId: data.userId
+          }
+        })
+
+        let canAddReaction = userReactions ? true : false
+
+        res.status(200).json({reactions,plusCount,minusCount,canAddReaction})
 
       } else {
         res.status(400).json({error: "Cannot find any reactions"})
