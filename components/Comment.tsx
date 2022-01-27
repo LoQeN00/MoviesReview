@@ -89,20 +89,14 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
                     
                 </div>
                 <div>
-                    {/* {session && session.user.userId != comment.userId  && canAddReaction ? (
-                        <div className='flex border-2 border-secondary'>
-                            <div onClick={() => addReaction("+")}> + </div>
-                            <div onClick={() => addReaction("-")}> - </div>
+                    {session && session.user.userId != comment.userId  && canAddReaction ? (
+                         <div className='flex mt-4 space-x-4'>
+                            <div className='border-2 border-secondary p-2 rounded-full w-8 h-8 flex justify-center items-center' onClick={() => addReaction("+")}> + </div>
+                            <div className='border-2 border-secondary p-2 rounded-full w-8 h-8 flex justify-center items-center' onClick={() => addReaction("-")}> - </div>
                         </div>
                         ): null
 
-                    } */}
-
-                    <div className='flex mt-4 space-x-4'>
-                        <div className='border-2 border-secondary p-2 rounded-full w-8 h-8 flex justify-center items-center' onClick={() => addReaction("+")}> + </div>
-                        <div className='border-2 border-secondary p-2 rounded-full w-8 h-8 flex justify-center items-center' onClick={() => addReaction("-")}> - </div>
-                    </div>
-                    
+                    }
                 </div>
             </div>
         </div>
