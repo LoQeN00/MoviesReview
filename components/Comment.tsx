@@ -14,19 +14,31 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
     const { data: session, status } = useSession()
 
     const [reactions,setReactions] = useState<Reaction[]>([])
+    const [plusCount,setPlusCount] = useState()
+    const [minusCount,setMinusCount] = useState()
+
 
     useEffect(() => {
 
         const fetchData = async () => {
-            const response = await fetch(`/api/reactions/${comment.id}`)
+            const response = await fetch(`/api/reactions/${comment.id}`, {
+                method: "POST",
+                body: JSON.stringify({
+                    userId: session?.user.userId
+                })
+            })
             const data = await response.json()
 
-            setReactions(data)
+            console.log(data)
+
+            setReactions(data.reactions)
+            setPlusCount(data.plusCount)
+            setMinusCount(data.minusCount)
         }
 
         fetchData()
 
-    },[comment.id])
+    },[comment.id,session])
 
     
     const addReaction = async (type: "+" | "-") => {
@@ -48,16 +60,24 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
             <div className='w-[64px] h-[64px] relative mr-5'>
                 <Image layout='fill' quality={75} className='rounded-full' src={comment.authorImg} alt={comment.author} />
             </div>
-            <div className='flex flex-col'>
+            <div className='flex flex-col relative'>
                 <div className='bg-secondary p-4 rounded-2xl max-w-[350px] break-words relative'>
                     <p className='font-bold text-md tracking-wide'>{comment.author}</p>
                     <p>{comment.text}</p>
+                    <div className='absolute bottom-[-10px] right-[-20px] bg-accent p-1 rounded-lg flex'>
+                        <p>{plusCount}+ </p>
+                        <p>{minusCount}- </p>
+                    </div>
                 </div>
                 <div>
-                    <div>
-                        <p onClick={() => addReaction("+")}> + </p>
-                        <p onClick={() => addReaction("-")}> - </p>
+                    {session ? (
+                        <div>
+                        <div onClick={() => addReaction("+")}> + </div>
+                        <div onClick={() => addReaction("-")}> - </div>
                     </div>
+                    ): null
+                }
+                    
                 </div>
             </div>
         </div>
