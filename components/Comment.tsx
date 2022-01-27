@@ -78,10 +78,15 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
                 <div className='bg-secondary p-4 rounded-2xl max-w-[350px] break-words relative'>
                     <p className='font-bold text-md tracking-wide'>{comment.author}</p>
                     <p>{comment.text}</p>
-                    <div className='absolute bottom-[-10px] right-[-20px] bg-accent p-1 rounded-lg flex'>
-                        <p>{plusCount}+ </p>
-                        <p>{minusCount}- </p>
-                    </div>
+                    {plusCount && minusCount && (minusCount > 0 || plusCount > 0) ? (
+                        <div className='absolute bottom-[-10px] right-[-20px] bg-accent p-1 rounded-lg flex'>
+                            <p>{plusCount}+ </p>
+                            <p>{minusCount}- </p>
+                        </div>
+                        ): null
+                        
+                    }
+                    
                 </div>
                 <div>
                     {session && session.user.userId != comment.userId  && canAddReaction ? (
