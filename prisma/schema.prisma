@@ -35,8 +35,6 @@ model Comment {
   text      String    @db.VarChar(255)
   movie     Movie     @relation(fields: [movieId], references: [id])
   movieId   Int 
-  plus      Int       @default(0)
-  minus     Int       @default(0)
 }
 
 
