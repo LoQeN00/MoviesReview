@@ -18,7 +18,7 @@ export default async function handler(
           }
         })
 
-        console.log(reactions)
+       
 
         const plusCount = await prisma.reaction.count({
           where: {
@@ -35,8 +35,8 @@ export default async function handler(
           }
         })
 
-        console.log(reactions)
-
+        const test = await prisma.reaction.findMany()
+        
         res.status(200).json({reactions,plusCount,minusCount})
 
       } else {

@@ -70,7 +70,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
                     </div>
                 </div>
                 <div>
-                    {session ? (
+                    {session && session.user.userId != comment.userId ?  (
                         <div>
                         <div onClick={() => addReaction("+")}> + </div>
                         <div onClick={() => addReaction("-")}> - </div>
