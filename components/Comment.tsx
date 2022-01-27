@@ -29,7 +29,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
             })
             const data = await response.json()
 
-            console.log(data)
+           
 
             setReactions(data.reactions)
             setPlusCount(data.plusCount)
@@ -51,6 +51,18 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
                 comment: comment.id
             })
         })
+
+        const updatedData = await fetch(`/api/reactions/${comment.id}`, {
+            method: "POST",
+            body: JSON.stringify({
+                userId: session?.user.userId
+            })
+        })
+        const data = await updatedData.json()
+
+        setReactions(data.reactions)
+        setPlusCount(data.plusCount)
+        setMinusCount(data.minusCount)
 
     }
 
