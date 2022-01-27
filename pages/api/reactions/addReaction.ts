@@ -10,7 +10,7 @@ export default async function handler(
 
     const data = JSON.parse(req.body)
 
-    const result = prisma.reaction.create({
+    const result = await prisma.reaction.create({
         data: {
             type: data.reactionType,
             commentId: data.comment,
