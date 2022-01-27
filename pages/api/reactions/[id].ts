@@ -18,15 +18,20 @@ export default async function handler(
           }
         })
 
+        console.log(reactions)
+
         const plusCount = await prisma.reaction.count({
           where: {
-            type: "+"
+            type: "+",
+            commentId: parseInt(req.query.id)
           }
         })
 
         const minusCount = await prisma.reaction.count({
           where: {
-            type: "-"
+            type: "-",
+            commentId: parseInt(req.query.id)
+            
           }
         })
 
