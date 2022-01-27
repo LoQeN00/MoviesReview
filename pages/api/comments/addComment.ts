@@ -16,6 +16,7 @@ export default async function handler(
         text: data.text,
         author: data.author,
         authorImg: data.authorImg,
+        userId: data.userId,
         movie: {
            connect: {
                id: parseInt(data.slug)

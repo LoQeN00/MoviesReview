@@ -36,6 +36,7 @@ const CommentsContaier: FC = () => {
                         text: inputRef.current.value,
                         author: session.user.name,
                         authorImg: session.user.image,
+                        userId: session.user.userId,
                         slug
                     })
                 })

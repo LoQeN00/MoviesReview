@@ -35,7 +35,8 @@ model Comment {
   text      String    @db.VarChar(255)
   movie     Movie     @relation(fields: [movieId], references: [id])
   movieId   Int
-  reaction  Reaction[] 
+  reaction  Reaction[]
+  userId    String
 }
 
 
