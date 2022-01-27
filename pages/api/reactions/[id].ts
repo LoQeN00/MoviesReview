@@ -41,7 +41,7 @@ export default async function handler(
           }
         })
 
-        let canAddReaction = userReactions ? true : false
+        let canAddReaction = userReactions > 1 ? false : true
 
         res.status(200).json({reactions,plusCount,minusCount,canAddReaction})
 

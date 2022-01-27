@@ -65,7 +65,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
         setReactions(data.reactions)
         setPlusCount(data.plusCount)
         setMinusCount(data.minusCount)
-
+        setCanAddReaction(data.canAddReaction)
     }
 
 
