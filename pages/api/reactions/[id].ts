@@ -37,7 +37,8 @@ export default async function handler(
 
         const userReactions = await prisma.reaction.count({
           where: {
-            userId: data.userId
+            userId: data.userId,
+            commentId: parseInt(req.query.id)
           }
         })
 
