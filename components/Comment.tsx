@@ -45,6 +45,8 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
     
     const addReaction = async (type: "+" | "-") => {
 
+        setButtonsDisabled(true)
+
         const response = await fetch('/api/reactions/addReaction', {
             method: "POST",
             body: JSON.stringify({
@@ -66,7 +68,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
         setPlusCount(data.plusCount)
         setMinusCount(data.minusCount)
         setCanAddReaction(data.canAddReaction)
-        setButtonsDisabled(true)
+        
     }
 
 
