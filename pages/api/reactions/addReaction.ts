@@ -1,12 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from "../../../lib/prisma"
 import { Reaction } from '@prisma/client'
+import { getSession } from 'next-auth/react'
 
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
   ) {
+
+    const session = await getSession()
+
+    if (!session) return res.status(400).json({message:"Not authenticated"})
 
     const data = JSON.parse(req.body)
 
