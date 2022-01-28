@@ -1,5 +1,4 @@
 import React, {FC, useEffect, useState} from 'react'
-import {GetServerSideProps} from "next"
 import {Comment, Reaction} from "@prisma/client"
 import Image from "next/image"
 import { useSession } from 'next-auth/react'
@@ -17,6 +16,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
     const [plusCount,setPlusCount] = useState()
     const [minusCount,setMinusCount] = useState()
     const [canAddReaction,setCanAddReaction] = useState(false)
+    const [buttonsDisabled,setButtonsDisabled] = useState(false)
 
 
     useEffect(() => {
@@ -66,6 +66,7 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
         setPlusCount(data.plusCount)
         setMinusCount(data.minusCount)
         setCanAddReaction(data.canAddReaction)
+        setButtonsDisabled(true)
     }
 
 
@@ -91,8 +92,8 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
                 <div>
                     {session && session.user.userId != comment.userId  && canAddReaction ? (
                          <div className='flex mt-4 space-x-4'>
-                            <div className='border-2 border-secondary p-2 rounded-full w-8 h-8 flex justify-center items-center' onClick={() => addReaction("+")}> + </div>
-                            <div className='border-2 border-secondary p-2 rounded-full w-8 h-8 flex justify-center items-center' onClick={() => addReaction("-")}> - </div>
+                            <button disabled={buttonsDisabled} className='border-2 border-secondary p-2 rounded-full w-8 h-8 flex justify-center items-center' onClick={() => addReaction("+")}> + </button>
+                            <button disabled={buttonsDisabled} className='border-2 border-secondary p-2 rounded-full w-8 h-8 flex justify-center items-center' onClick={() => addReaction("-")}> - </button>
                         </div>
                         ): null
 
