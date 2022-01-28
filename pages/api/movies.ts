@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from "../../lib/prisma"
 import { Movie } from '@prisma/client'
-import protectAPI from "../../middleware/protectApiRoute"
+
 
 async function handler(
     req: NextApiRequest,
@@ -15,4 +15,4 @@ async function handler(
 }
 
 
-export default protectAPI(handler)
+export default handler
