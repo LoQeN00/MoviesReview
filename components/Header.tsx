@@ -1,4 +1,4 @@
-import React,{FC} from 'react';
+import React,{FC, useState} from 'react';
 import { useSession,signOut,signIn } from 'next-auth/react'
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,6 +8,8 @@ import Image from 'next/image';
 const Header : FC = () => {
 
   const { data: session, status } = useSession()
+
+  const [userImage,setUserImage] = useState(session?.user.image)
 
   return (
     <header className='bg-[#2EC4B6] p-8 text-primary flex justify-between items-center'>
@@ -24,8 +26,8 @@ const Header : FC = () => {
                     <div className='flex space-x-1 justify-center items-center'>
                       <p className='hidden md:block md:text-xl lg:text-2xl'>{session.user && session.user.name}</p>
                       <div className='w-16 h-16 relative'>
-                        {session.user.image ?
-                         <Image quality={100} className='rounded-full' layout='fill' src={session.user.image} alt={ session.user.name }  /> :
+                        {userImage ?
+                         <Image quality={100} className='rounded-full' layout='fill' src={userImage} alt={ session.user.name } onError={() => setUserImage('/default.jpg')}  /> :
                          <p>{session.user.name}</p>
                         }
                       </div>
