@@ -24,7 +24,10 @@ const Header : FC = () => {
                     <div className='flex space-x-1 justify-center items-center'>
                       <p className='hidden md:block md:text-xl lg:text-2xl'>{session.user && session.user.name}</p>
                       <div className='w-16 h-16 relative'>
-                        <Image quality={100} className='rounded-full' layout='fill' src={session.user.image} alt={ session.user.name } />
+                        {session.user.image ?
+                         <Image quality={100} className='rounded-full' layout='fill' src={session.user.image} alt={ session.user.name }  /> :
+                         <p>{session.user.name}</p>
+                        }
                       </div>
                     </div>
                     

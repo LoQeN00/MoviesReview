@@ -75,7 +75,11 @@ const CommentComponent: FC<CommentProps> = ({comment}) => {
     return (
         <div className='text-white max-w-lg flex p-4'>
             <div className='w-[64px] h-[64px] relative mr-5'>
-                <Image layout='fill' quality={75} className='rounded-full' src={comment.authorImg} alt={comment.author} />
+                {comment.authorImg ?
+                    <Image layout='fill' quality={75} className='rounded-full' src={comment.authorImg} alt={comment.author} />:
+                    <p>{comment.author}</p>
+                }
+                
             </div>
             <div className='flex flex-col relative'>
                 <div className='bg-secondary p-4 rounded-2xl max-w-[350px] break-words relative'>
