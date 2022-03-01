@@ -1,4 +1,4 @@
-import type { NextPage, GetServerSideProps } from 'next'
+import type { NextPage, GetServerSideProps, GetStaticProps } from 'next'
 import { useEffect } from 'react'
 import { Movie } from '@prisma/client'
 import { useRecoilState } from 'recoil'
@@ -28,7 +28,21 @@ const Home: NextPage<HomeProps> = ({moviesData}) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+
+
+//   const data = await fetch(`https://movies-review-three.vercel.app/api/movies`)
+//   const response = await data.json()
+
+//   return {
+//     props: {
+//       moviesData: response
+//     }
+//   }
+
+// }
+
+export const getStaticProps:  GetStaticProps = async () => {
 
 
   const data = await fetch(`https://movies-review-three.vercel.app/api/movies`)
